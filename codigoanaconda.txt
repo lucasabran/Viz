@@ -1,0 +1,20 @@
+Exportar los datos del json al DF Y guardarlo en Excel
+
+import pandas as pd
+import requests
+
+# URL del JSON de ejemplo
+json_url = 'https://data.cityofnewyork.us/resource/erm2-nwe9.json'
+
+# Obtener el JSON desde la URL
+response = requests.get(json_url)
+json_data = response.json()
+
+# Convertir JSON a DataFrame de pandas
+df = pd.DataFrame(json_data)
+
+# Mostrar DataFrame
+print(df)
+
+# Exportar a Excel
+df.to_excel('datos.xlsx', index=False)
